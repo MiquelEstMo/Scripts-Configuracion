@@ -61,7 +61,8 @@ if [ -f "$HOME/.zshrc" ]; then
 fi
 
 if [ -d "$HOME/.oh-my-zsh" ]; then
-    echo -e "${CYAN}📋 Backup de .oh-my-zsh trobat${NC}"
+    cp -r "$HOME/.oh-my-zsh" "$BACKUP_DIR/oh-my-zsh.backup"
+    echo -e "${CYAN}📋 Backup complet de .oh-my-zsh creat${NC}"
 fi
 
 echo -e "${GREEN}✅ Backups creats a: $BACKUP_DIR${NC}"
@@ -76,6 +77,17 @@ echo -e "${CYAN}🐚 Shell per defecte: ${YELLOW}$(getent passwd $USER | cut -d:
 
 if [ -d "$HOME/.oh-my-zsh" ]; then
     echo -e "${CYAN}📦 Oh My Zsh: ${RED}INSTAL·LAT${NC}"
+    
+    # Check for specific plugins
+    if [ -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
+        echo -e "${CYAN}   └─ zsh-autosuggestions: ${RED}INSTAL·LAT${NC}"
+    fi
+    if [ -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
+        echo -e "${CYAN}   └─ zsh-syntax-highlighting: ${RED}INSTAL·LAT${NC}"
+    fi
+    if [ -d "$HOME/.oh-my-zsh/custom/plugins/OhMyZsh-full-autoupdate" ]; then
+        echo -e "${CYAN}   └─ OhMyZsh-full-autoupdate: ${RED}INSTAL·LAT${NC}"
+    fi
 else
     echo -e "${CYAN}📦 Oh My Zsh: ${GREEN}NO INSTAL·LAT${NC}"
 fi
@@ -109,17 +121,52 @@ fi
 
 # --------- RESETEAR SHELL A BASH ---------
 
-# --------- ELIMINAR CONFIGURACIONS ZSH ---------
+# --------- ELIMINAR CONFIGURACIONS ZSH I PLUGINS ---------
 
 if [ -d "$HOME/.oh-my-zsh" ] || [ -f "$HOME/.zshrc" ]; then
-    echo -e "\n${MAGENTA}🗑️  Eliminant configuracions de Zsh...${NC}"
+    echo -e "\n${MAGENTA}🗑️  Eliminant configuracions de Zsh i plugins...${NC}"
     
-    if confirm "Vols eliminar Oh My Zsh i les seves configuracions?"; then
+    if confirm "Vols eliminar Oh My Zsh i TOTS els plugins personalitzats?"; then
         
-        # Remove Oh My Zsh
+        # Remove specific plugins first (for confirmation)
+        echo -e "${YELLOW}🔍 Eliminant plugins específics...${NC}"
+        
+        if [ -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
+            rm -rf "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+            echo -e "${GREEN}   ✅ zsh-autosuggestions eliminat${NC}"
+        fi
+        
+        if [ -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
+            rm -rf "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+            echo -e "${GREEN}   ✅ zsh-syntax-highlighting eliminat${NC}"
+        fi
+        
+        if [ -d "$HOME/.oh-my-zsh/custom/plugins/OhMyZsh-full-autoupdate" ]; then
+            rm -rf "$HOME/.oh-my-zsh/custom/plugins/OhMyZsh-full-autoupdate"
+            echo -e "${GREEN}   ✅ OhMyZsh-full-autoupdate eliminat${NC}"
+        fi
+        
+        # Remove any other custom plugins
+        if [ -d "$HOME/.oh-my-zsh/custom/plugins" ]; then
+            for plugin in "$HOME/.oh-my-zsh/custom/plugins"/*; do
+                if [ -d "$plugin" ]; then
+                    plugin_name=$(basename "$plugin")
+                    rm -rf "$plugin"
+                    echo -e "${GREEN}   ✅ Plugin personalitzat eliminat: ${plugin_name}${NC}"
+                fi
+            done
+        fi
+        
+        # Remove custom themes if any
+        if [ -d "$HOME/.oh-my-zsh/custom/themes" ]; then
+            rm -rf "$HOME/.oh-my-zsh/custom/themes"
+            echo -e "${GREEN}   ✅ Temes personalitzats eliminats${NC}"
+        fi
+        
+        # Remove complete Oh My Zsh directory
         if [ -d "$HOME/.oh-my-zsh" ]; then
             rm -rf "$HOME/.oh-my-zsh"
-            echo -e "${GREEN}✅ Oh My Zsh eliminat${NC}"
+            echo -e "${GREEN}✅ Oh My Zsh completament eliminat${NC}"
         fi
         
         # Remove .zshrc files
@@ -133,12 +180,18 @@ if [ -d "$HOME/.oh-my-zsh" ] || [ -f "$HOME/.zshrc" ]; then
             echo -e "${GREEN}✅ .zshrc.pre-oh-my-zsh eliminat${NC}"
         fi
         
+        # Remove zsh-specific directories that might remain
+        if [ -d "$HOME/.zsh" ]; then
+            rm -rf "$HOME/.zsh"
+            echo -e "${GREEN}✅ Directori .zsh eliminat${NC}"
+        fi
+        
     else
         echo -e "${YELLOW}⏭️  Mantenint configuracions de Zsh${NC}"
     fi
 fi
 
-# --------- ELIMINAR CONFIGURACIONS ZSH ---------
+# --------- ELIMINAR CONFIGURACIONS ZSH I PLUGINS ---------
 
 # --------- DESINSTALAR ZSH (OPCIONAL) ---------
 
@@ -146,8 +199,17 @@ if command -v zsh >/dev/null 2>&1; then
     echo -e "\n${MAGENTA}🗑️  Zsh està instal·lat al sistema${NC}"
     
     if confirm "Vols desinstal·lar Zsh completament del sistema?"; then
-        sudo apt-get remove --purge zsh -y
-        sudo apt-get autoremove -y
+        # Detect package manager and uninstall accordingly
+        if command -v apt-get >/dev/null 2>&1; then
+            sudo apt-get remove --purge zsh -y
+            sudo apt-get autoremove -y
+        elif command -v yum >/dev/null 2>&1; then
+            sudo yum remove zsh -y
+        elif command -v dnf >/dev/null 2>&1; then
+            sudo dnf remove zsh -y
+        elif command -v pacman >/dev/null 2>&1; then
+            sudo pacman -Rs zsh
+        fi
         echo -e "${GREEN}✅ Zsh desinstal·lat del sistema${NC}"
     else
         echo -e "${YELLOW}⏭️  Mantenint Zsh instal·lat (però no s'utilitzarà)${NC}"
@@ -237,6 +299,7 @@ if confirm "Vols netejar l'historial de comandes?"; then
     
     # Clear zsh history if exists
     rm -f "$HOME/.zsh_history"
+    rm -f "$HOME/.zhistory"
     
     echo -e "${GREEN}✅ Historial netejat${NC}"
 else
@@ -245,13 +308,36 @@ fi
 
 # --------- LIMPIAR HISTORIAL (OPCIONAL) ---------
 
+# --------- NETEJA ADDICIONAL ---------
+
+echo -e "\n${MAGENTA}🧹 Neteja addicional de fitxers relacionats amb Zsh...${NC}"
+
+# Remove any remaining zsh-related files
+rm -f "$HOME/.zcompdump"*
+rm -f "$HOME/.zsh_sessions"
+rm -f "$HOME/.lesshst"
+
+# Remove any zsh cache directories
+if [ -d "$HOME/.cache/zsh" ]; then
+    rm -rf "$HOME/.cache/zsh"
+    echo -e "${GREEN}✅ Cache de Zsh eliminat${NC}"
+fi
+
+# --------- NETEJA ADDICIONAL ---------
+
 # --------- RESUM FINAL ---------
 
 echo -e "\n${GREEN}🎉 Reset del terminal completat!${NC}"
 echo -e "\n${CYAN}📋 Resum de canvis:${NC}"
 echo -e "${BLUE}   • Shell canviat a bash${NC}"
+echo -e "${BLUE}   • Oh My Zsh completament eliminat${NC}"
+echo -e "${BLUE}   • Tots els plugins eliminats:${NC}"
+echo -e "${BLUE}     └─ zsh-autosuggestions${NC}"
+echo -e "${BLUE}     └─ zsh-syntax-highlighting${NC}"
+echo -e "${BLUE}     └─ OhMyZsh-full-autoupdate${NC}"
 echo -e "${BLUE}   • Configuracions de Zsh eliminades${NC}"
 echo -e "${BLUE}   • .bashrc resetejat${NC}"
+echo -e "${BLUE}   • Cache i fitxers temporals netejats${NC}"
 echo -e "${BLUE}   • Backup creat a: ${YELLOW}$BACKUP_DIR${NC}"
 
 echo -e "\n${YELLOW}🔄 Per aplicar tots els canvis completament:${NC}"
@@ -261,5 +347,8 @@ echo -e "${CYAN}   3. O reinicia el sistema${NC}"
 
 echo -e "\n${MAGENTA}💡 Si vols recuperar alguna configuració, els backups estan a:${NC}"
 echo -e "${YELLOW}   $BACKUP_DIR${NC}"
+
+echo -e "\n${GREEN}🔍 Per verificar que tot s'ha eliminat correctament:${NC}"
+echo -e "${CYAN}   ls -la ~/ | grep -E '(zsh|oh-my)'${NC}"
 
 # --------- RESUM FINAL ---------
