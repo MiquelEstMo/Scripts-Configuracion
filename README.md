@@ -1,12 +1,11 @@
 # 🚀 CubeCat Dev Setup
 
-[![Linux](https://img.shields.io/badge/💻_Linux-0078D6?style=flat-square&logo=linux&logoColor=white&labelColor=0078D6&color=white&borderRadius=12)](https://www.linux.org/)
-[![ZSH](https://img.shields.io/badge/🐚_ZSH-F15A24?style=flat-square&logo=gnu-bash&logoColor=white&labelColor=F15A24&color=white&borderRadius=12)](https://www.zsh.org/)
-[![NeoVim](https://img.shields.io/badge/📝_NeoVim-57A143?style=flat-square&logo=neovim&logoColor=white&labelColor=57A143&color=white&borderRadius=12)](https://neovim.io/)
-[![Python](https://img.shields.io/badge/🐍_Python-3776AB?style=flat-square&logo=python&logoColor=white&labelColor=3776AB&color=white&borderRadius=12)](https://www.python.org/)
-[![Java](https://img.shields.io/badge/☕_Java-007396?style=flat-square&logo=java&logoColor=white&labelColor=007396&color=white&borderRadius=12)](https://www.java.com/)
-[![Git](https://img.shields.io/badge/🔀_Git-F05032?style=flat-square&logo=git&logoColor=white&labelColor=F05032&color=white&borderRadius=12)](https://git-scm.com/)
-[![MIT License](https://img.shields.io/badge/📜_MIT_License-3DA639?style=flat-square&logo=opensourceinitiative&logoColor=white&labelColor=3DA639&color=white&borderRadius=12)](LICENSE)
+[![Linux](https://img.shields.io/badge/Linux-000000?style=for-the-badge&logo=linux&logoColor=white&labelColor=000000&color=white&borderRadius=15)](https://www.linux.org/)
+[![ZSH](https://img.shields.io/badge/ZSH-F15A24?style=for-the-badge&logo=gnu-bash&logoColor=white&labelColor=F15A24&color=white&borderRadius=15)](https://www.zsh.org/)
+[![NeoVim](https://img.shields.io/badge/NeoVim-57A143?style=for-the-badge&logo=neovim&logoColor=white&labelColor=57A143&color=white&borderRadius=15)](https://neovim.io/)
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white&labelColor=3776AB&color=white&borderRadius=15)](https://www.python.org/)
+[![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white&labelColor=007396&color=white&borderRadius=15)](https://www.java.com/)
+[![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white&labelColor=F05032&color=white&borderRadius=15)](https://git-scm.com/)
 
 Repositorio personal con scripts de instalación y configuración automática para mi entorno de desarrollo en sistemas Linux.
 
