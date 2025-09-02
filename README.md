@@ -1,23 +1,100 @@
-# 🚀 CubeCat Dev Setup
+# 🚀 Mi Entorno de Desarrollo
 
-[![Linux](https://img.shields.io/badge/Linux-000000?style=for-the-badge&logo=linux&logoColor=white&labelColor=000000&color=white&borderRadius=15)](https://www.linux.org/)
-[![ZSH](https://img.shields.io/badge/ZSH-F15A24?style=for-the-badge&logo=gnu-bash&logoColor=white&labelColor=F15A24&color=white&borderRadius=15)](https://www.zsh.org/)
-[![NeoVim](https://img.shields.io/badge/NeoVim-57A143?style=for-the-badge&logo=neovim&logoColor=white&labelColor=57A143&color=white&borderRadius=15)](https://neovim.io/)
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white&labelColor=3776AB&color=white&borderRadius=15)](https://www.python.org/)
-[![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white&labelColor=007396&color=white&borderRadius=15)](https://www.java.com/)
-[![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white&labelColor=F05032&color=white&borderRadius=15)](https://git-scm.com/)
+[![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://www.linux.org/)
+[![ZSH](https://img.shields.io/badge/Shell-ZSH-89e051?style=for-the-badge&logo=zsh&logoColor=white)](https://www.zsh.org/)
+[![Neovim](https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white)](https://neovim.io/)
+[![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://www.python.org/)
+[![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.java.com/)
+[![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
 
-Repositorio personal con scripts de instalación y configuración automática para mi entorno de desarrollo en sistemas Linux.
+Colección de scripts automatizados para configurar mi entorno de desarrollo completo en sistemas Linux. Este repositorio me permite recrear rápidamente mi setup preferido en cualquier máquina nueva.
 
-## ✨ Características
+## 📁 Estructura del Proyecto
 
-- 🐚 **ZSH con Oh My Zsh** - Shell potente con plugins esenciales
-- 🎨 **JetBrains Mono Nerd Font** - Fuente optimizada para desarrollo
-- 🐍 **Python** + herramientas esenciales
-- ☕ **Java OpenJDK** - Entorno de desarrollo Java
-- 🔧 **GCC/G++** - Compiladores para C/C++
-- 📝 **NeoVim + NvChad** - Editor modal con configuración preestablecida
-- 🖥️ **Neofetch** - Utilidad de información del sistema
-- ⚡ **Instalación automatizada** - Scripts modulares y configurables
+```
+mi-entorno-desarrollo/
+├── 📂 fuentes/                    # Scripts para instalación de fuentes
+│   └── instalar-jetbrains-mono.sh
+├── 📂 terminal/                   # Configuración de terminal y shell
+│   ├── instalar-zsh.sh
+│   ├── instalar-oh-my-zsh.sh
+│   ├── instalar-plugins-zsh.sh
+│   └── config-zsh/
+│       └── .zshrc                 # Mi configuración personalizada de ZSH
+├── 📂 herramientas-dev/          # Herramientas de desarrollo esenciales
+│   ├── instalar-git.sh
+│   ├── instalar-python.sh
+│   ├── instalar-java.sh
+│   └── instalar-gcc.sh
+├── 📂 aplicaciones/              # Aplicaciones y editores
+│   ├── instalar-neovim.sh        # Mi script personalizado de NeoVim
+│   └── instalar-neofetch.sh
+├── 📂 configuraciones/           # Archivos de configuración
+│   ├── nvim/                     # Configuración de NeoVim
+│   └── dotfiles/                 # Otros archivos de configuración
+├── 📂 documentacion/             # Documentación y guías
+│   └── GUIA_INSTALACION.md
+├── 📜 instalar-todo.sh           # Script principal - Instala todo
+└── 📖 README.md                  # Este archivo
+```
 
-## 🗂️ Estructura del Proyecto
+## ⚡ Instalación Rápida
+
+### Instalación Completa (Recomendado)
+```bash
+# Clonar el repositorio
+git clone https://github.com/tu-usuario/mi-entorno-desarrollo.git
+cd mi-entorno-desarrollo
+
+# Hacer ejecutable y correr el script principal
+chmod +x instalar-todo.sh
+./instalar-todo.sh
+```
+
+### Instalación Selectiva
+```bash
+# Solo terminal y shell
+./terminal/instalar-zsh.sh
+./terminal/instalar-oh-my-zsh.sh
+./terminal/instalar-plugins-zsh.sh
+
+# Solo herramientas de desarrollo
+./herramientas-dev/instalar-git.sh
+./herramientas-dev/instalar-python.sh
+
+# Solo aplicaciones
+./aplicaciones/instalar-neovim.sh
+```
+
+## 🛠️ Componentes Incluidos
+
+### 🖥️ Terminal y Shell
+- **ZSH**: Shell avanzado con mejor autocompletado
+- **Oh My ZSH**: Framework para gestionar configuración de ZSH
+- **Plugins ZSH**: Plugins esenciales para productividad
+- **Configuración personalizada**: Mi `.zshrc` optimizado
+
+### 🔧 Herramientas de Desarrollo
+- **Git**: Control de versiones
+- **Python**: Lenguaje de programación + pip
+- **Java**: JDK para desarrollo Java
+- **GCC**: Compilador GNU para C/C++
+
+### 📝 Editores y Aplicaciones
+- **NeoVim**: Editor de texto modal altamente configurable
+- **NeoFetch**: Información del sistema con estilo
+
+### 🎨 Fuentes y Personalización
+- **JetBrains Mono**: Fuente monoespaciada optimizada para código
+
+## 📋 Requisitos
+
+- Sistema operativo basado en Linux (Ubuntu, Debian, Arch, etc.)
+- Acceso a `sudo`
+- Conexión a internet
+- `curl` o `wget` instalado
+
+## 📖 Documentación Adicional
+
+Para instrucciones detalladas de instalación y configuración, consulta:
+- [📋 Guía de Instalación Completa](documentacion/GUIA_INSTALACION.md)
