@@ -1,5 +1,5 @@
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-![ZSH](https://img.shields.io/badge/ZSH-89E051?style=for-the-badge&logo=gnu-bash&logoColor=black)
+![Shell Script | ZSH](https://img.shields.io/badge/Shell_Script-ZSH-1e1e2e?style=for-the-badge&logo=gnu-bash&logoColor=white&labelColor=89b4fa)
 ![NeoVim](https://img.shields.io/badge/NeoVim-%252357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
