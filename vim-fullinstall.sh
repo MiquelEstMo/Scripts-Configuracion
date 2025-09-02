@@ -1,69 +1,100 @@
 #!/bin/bash
 
-# --------- COLORS ---------
+# Colores para la salida
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
-MAGENTA='\033[0;35m'
-CYAN='\033[0;36m'
 NC='\033[0m' # No Color
-# --------- COLORS ---------
 
+# Banner de desinstalación
+echo -e "${RED}"
+echo "██████╗ ███████╗██╗██╗     ███████╗██╗██████╗ ███████╗██████╗ "
+echo "██╔══██╗██╔════╝██║██║     ██╔════╝██║██╔══██╗██╔════╝██╔══██╗"
+echo "██║  ██║█████╗  ██║██║     █████╗  ██║██████╔╝█████╗  ██████╔╝"
+echo "██║  ██║██╔══╝  ██║██║     ██╔══╝  ██║██╔══██╗██╔══╝  ██╔══██╗"
+echo "██████╔╝██║     ██║███████╗██║     ██║██║  ██║███████╗██║  ██║"
+echo "╚═════╝ ╚═╝     ╚═╝╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝"
+echo -e "${NC}"
+echo -e "${YELLOW}=======================================================${NC}"
+echo -e "${RED}         DESINSTALADOR DE NEOVIM & NVCHAD${NC}"
+echo -e "${YELLOW}=======================================================${NC}"
 
-# ------------------------ BANNER ------------------------
-echo -e "${RED}____   ____.___   _____    ________  _______________   ____${NC}"
-echo -e "${YELLOW}\   \ /   /|   | /     \   \______ \ \_   _____/\   \ /   /${NC}"
-echo -e "${GREEN} \   Y   / |   |/  \ /  \   |    |  \ |    __)_  \   Y   / ${NC}"
-echo -e "${CYAN}  \     /  |   /    Y    \  |    `   \|        \  \     /  ${NC}"
-echo -e "${MAGENTA}   \___/   |___\____|__  / /_______  /_______  /   \___/   ${NC}"
-echo -e "${BLUE}                       \/          \/        \/            ${NC}"
-echo
-echo -e "${CYAN}=======================================================${NC}"
-echo -e "${YELLOW}         Instal·lador de NeoVim & NvChad${NC}"
-echo -e "${CYAN}=======================================================${NC}"
+# Función para confirmar desinstalación
+confirm_uninstall() {
+    echo -e "${YELLOW}¿Estás seguro de que quieres desinstalar todo? (y/N)${NC}"
+    read -r response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            return 0
+            ;;
+        *)
+            echo -e "${GREEN}Desinstalación cancelada.${NC}"
+            exit 0
+            ;;
+    esac
+}
 
-echo -e "\n${MAGENTA}✨ Instalant NeoVim && NvChad${NC}"
+# Confirmar antes de proceder
+confirm_uninstall
 
+# --------- DESINSTALAR NVCHAD ---------
+echo -e "\n${RED}🗑️  Eliminando NvChad...${NC}"
+if [ -d ~/.config/nvim ]; then
+    rm -rf ~/.config/nvim
+    echo -e "${GREEN}✅ NvChad eliminado correctamente.${NC}"
+else
+    echo -e "${YELLOW}⚠️  NvChad no estaba instalado.${NC}"
+fi
 
-# ------------------------ BANNER ------------------------
+# --------- DESINSTALAR NEOVIM ---------
+echo -e "\n${RED}🗑️  Desinstalando NeoVim...${NC}"
 
-# --------- ACTUALITZACIÓ DE PAQUETS ---------
+# Eliminar enlace simbólico
+if [ -L /usr/local/bin/nvim ]; then
+    sudo rm -f /usr/local/bin/nvim
+    echo -e "${GREEN}✅ Enlace simbólico eliminado.${NC}"
+fi
 
-echo -e "${BLUE}⏳ Actualitzant paquets locals...${NC}\n"
+# Eliminar archivo AppImage
+if [ -f ~/Applications/nvim-linux-x86_64.appimage ]; then
+    rm -f ~/Applications/nvim-linux-x86_64.appimage
+    echo -e "${GREEN}✅ Archivo AppImage eliminado.${NC}"
+fi
 
-sudo apt-get update
-sudo apt-get upgrade
+# Eliminar directorio Applications si está vacío
+if [ -d ~/Applications ] && [ -z "$(ls -A ~/Applications)" ]; then
+    rmdir ~/Applications
+    echo -e "${GREEN}✅ Directorio Applications eliminado.${NC}"
+fi
 
-echo -e "\n${GREEN}✅ Paquets actualitzats amb éxit.${NC}"
+# --------- LIMPIEZA ADICIONAL ---------
+echo -e "\n${RED}🧹 Realizando limpieza adicional...${NC}"
 
-# --------- ACTUALITZACIÓ DE PAQUETS ---------
+# Eliminar cache de NeoVim
+if [ -d ~/.cache/nvim ]; then
+    rm -rf ~/.cache/nvim
+    echo -e "${GREEN}✅ Cache de NeoVim eliminado.${NC}"
+fi
 
-# -------------------------- INSTALACIÓ DE NEOVIM --------------------------
+# Eliminar local state de NeoVim
+if [ -d ~/.local/share/nvim ]; then
+    rm -rf ~/.local/share/nvim
+    echo -e "${GREEN}✅ Datos locales de NeoVim eliminados.${NC}"
+fi
 
-echo -e "\n${MAGENTA}✨ Instalant NeoVim...${NC}"
+# Eliminar configuraciones de respaldo si existen
+if [ -d ~/.config/nvim.backup.* ]; then
+    rm -rf ~/.config/nvim.backup.*
+    echo -e "${GREEN}✅ Copias de seguridad eliminadas.${NC}"
+fi
 
-mkdir -p ~/Applications
-cd ~/Applications
-wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage
-chmod +x nvim-linux-x86_64.appimage
-sudo rm -f /usr/local/bin/nvim  # Limpiar enlace anterior si existe
-sudo ln -s ~/Applications/nvim-linux-x86_64.appimage /usr/local/bin/nvim
-nvim --version
-
-echo -e "${GREEN}✅ NeoVim instalat correctament!${NC}"
-
-# -------------------------- INSTALACIÓ DE NEOVIM --------------------------
-
-# -------------------------- INSTALACIÓ DE NVCHAD --------------------------
-
-echo -e "${MAGENTA}✨ Instalant NvChad...${NC}"
-
-git clone https://github.com/NvChad/starter ~/.config/nvim
-
-echo -e "${GREEN}✅ NvChad instalat correctament!${NC}"
-
-# -------------------------- INSTALACIÓ DE NVCHAD --------------------------
-
-echo -e "${GREEN}✅ NeoVim && NvChad s'han instal·lat correctament!!${NC}"
-echo -e "${YELLOW}🚀 Executa NeoVim amb 'nvim' per configurar tot.${NC}"
+# --------- MENSAJE FINAL ---------
+echo -e "\n${GREEN}"
+echo "======================================================="
+echo "✅ DESINSTALACIÓN COMPLETADA CORRECTAMENTE"
+echo "======================================================="
+echo -e "${NC}"
+echo -e "${YELLOW}🗑️  Todos los componentes de NeoVim y NvChad han sido eliminados.${NC}"
+echo -e "${YELLOW}📝 Nota: Las dependencias del sistema instaladas (git, wget, etc.)"
+echo -e "    no se han eliminado. Puedes eliminarlas manualmente si lo deseas.${NC}"
