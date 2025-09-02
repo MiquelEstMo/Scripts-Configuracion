@@ -1,9 +1,12 @@
-# 🚀 CubeCat Dev Setup
+# 🚀 Miquel Dev Setup
 
-![Linux](https://img.shields.io/badge/OS-Linux-blue?style=for-the-badge&logo=linux)
-![ZSH](https://img.shields.io/badge/Shell-ZSH-orange?style=for-the-badge&logo=gnu-bash)
-![NeoVim](https://img.shields.io/badge/Editor-NeoVim-green?style=for-the-badge&logo=neovim)
-![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+[![Linux](https://img.shields.io/badge/💻-Linux-0078D6?style=flat-square&logo=linux&logoColor=white)](https://www.linux.org/)
+[![ZSH](https://img.shields.io/badge/🐚-ZSH-F15A24?style=flat-square&logo=gnu-bash&logoColor=white)](https://www.zsh.org/)
+[![NeoVim](https://img.shields.io/badge/📝-NeoVim-57A143?style=flat-square&logo=neovim&logoColor=white)](https://neovim.io/)
+[![Python](https://img.shields.io/badge/🐍-Python-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Java](https://img.shields.io/badge/☕-Java-007396?style=flat-square&logo=openjdk&logoColor=white)](https://openjdk.org/)
+[![Git](https://img.shields.io/badge/🔀-Git-F05032?style=flat-square&logo=git&logoColor=white)](https://git-scm.com/)
+[![MIT License](https://img.shields.io/badge/📜-MIT_License-3DA639?style=flat-square&logo=opensourceinitiative&logoColor=white)](LICENSE)
 
 Repositorio personal con scripts de instalación y configuración automática para mi entorno de desarrollo en sistemas Linux.
 
