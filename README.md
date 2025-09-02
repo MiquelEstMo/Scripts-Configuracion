@@ -7,6 +7,7 @@
 [![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.java.com/)
 [![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
 
+
 Colección de scripts automatizados para configurar mi entorno de desarrollo completo en sistemas Linux. Este repositorio me permite recrear rápidamente mi setup preferido en cualquier máquina nueva.
 
 ## 📁 Estructura del Proyecto
@@ -94,7 +95,41 @@ chmod +x instalar-todo.sh
 - Conexión a internet
 - `curl` o `wget` instalado
 
+## 🚀 Características
+
+- ✅ **Instalación automatizada**: Un solo comando instala todo
+- ✅ **Modular**: Cada componente se puede instalar por separado
+- ✅ **Personalizado**: Configuraciones optimizadas para mi flujo de trabajo
+- ✅ **Bien documentado**: Cada script está comentado
+- ✅ **Multiplataforma**: Compatible con diferentes distribuciones Linux
+- ✅ **Idempotente**: Se puede ejecutar múltiples veces sin problemas
+
 ## 📖 Documentación Adicional
 
 Para instrucciones detalladas de instalación y configuración, consulta:
 - [📋 Guía de Instalación Completa](documentacion/GUIA_INSTALACION.md)
+
+## 🤝 Contribuciones
+
+Este es mi setup personal, pero siéntete libre de:
+- Hacer fork del proyecto
+- Sugerir mejoras
+- Reportar problemas
+- Compartir tus propias configuraciones
+
+## 📝 Notas
+
+- Los scripts están diseñados para ser **idempotentes** (se pueden ejecutar múltiples veces)
+- Cada script verifica si el software ya está instalado antes de proceder
+- Se incluyen verificaciones de errores y logs informativos
+- Las configuraciones personales están en la carpeta `configuraciones/`
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
+
+---
+
+⭐ **¿Te resultó útil?** ¡Dale una estrella al repositorio!
+
+💡 **¿Tienes sugerencias?** Abre un issue o envía un pull request.
