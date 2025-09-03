@@ -48,7 +48,7 @@ mkdir -p ~/Applications
 cd ~/Applications
 wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage
 chmod +x nvim-linux-x86_64.appimage
-sudo rm -f /usr/local/bin/nvim  # Limpiar enlace anterior si existe
+sudo rm -f /usr/local/bin/nvim 
 sudo ln -s ~/Applications/nvim-linux-x86_64.appimage /usr/local/bin/nvim
 nvim --version
 
