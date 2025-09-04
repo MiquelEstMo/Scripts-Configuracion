@@ -30,18 +30,18 @@ echo -e "\n${MAGENTA}✨ Instalant Zsh && Oh My Zsh${NC}"
 
 # ------------------------ BANNER ------------------------
 
-# --------- ACTUALITZACIÓ DE PAQUETS ---------
+# --------- ACTUALITZACIÃ" DE PAQUETS ---------
 
 echo -e "${BLUE}⏳ Actualitzant paquets locals...${NC}\n"
 
 sudo apt-get update
 sudo apt-get upgrade -y
 
-echo -e "\n${GREEN}✅ Paquets actualitzats amb éxit.${NC}"
+echo -e "\n${GREEN}✅ Paquets actualitzats amb èxit.${NC}"
 
-# --------- ACTUALITZACIÓ DE PAQUETS ---------
+# --------- ACTUALITZACIÃ" DE PAQUETS ---------
 
-# -------------------------- INSTALACIÓ DE ZSH --------------------------
+# -------------------------- INSTALACIÃ" DE ZSH --------------------------
 
 echo -e "\n${MAGENTA}✨ Instalant Zsh...${NC}"
 sudo apt install zsh -y
@@ -51,17 +51,20 @@ echo -e "${GREEN}✅ Zsh instalat correctament!${NC}"
 
 echo -e "\n${MAGENTA}✨ Instal·lant Oh My Zsh...${NC}"
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 echo -e "\n${MAGENTA}✨ Instal·lant plugins...${NC}"
 
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/OhMyZsh-full-autoupdate
+git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
 
 echo -e "\n${MAGENTA}✨ Instal·lant configuració...${NC}"
 
 cp -v .zshrc ~/.zshrc
+
+echo -e "${GREEN}✅ Configuració instalada correctament!${NC}"
 
 echo -e "${GREEN}✅ Oh My Zsh instalat correctament!${NC}"
 

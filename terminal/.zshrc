@@ -70,29 +70,8 @@ ZSH_THEME="awesomepanda"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    command-not-found
-    extract
-    deno
-    docker
-    git
-    github
-    gitignore
-    history-substring-search
-    node
-    npm
-    nvm
-    yarn
-    volta
-    vscode
-    sudo
-    web-search
-    z
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    ohmyzsh-full-autoupdate
-    git
-)
+
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting you-should-use)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -124,3 +103,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
  alias zshconfig="mate ~/.zshrc"
  alias ohmyzsh="mate ~/.oh-my-zsh"
+
+ cd /mnt/c/Users/mique/Documents
