@@ -123,6 +123,10 @@ echo -e "${CYAN}🔍 Instal·lant Snap...${NC}"
 sudo apt install -y snapd
 echo -e "${GREEN}✅ Snap instal·lat correctament!${NC}"
 
+echo -e "${CYAN}📦 Instal·lant Plymouth...${NC}"
+sudo apt install -y snapd
+echo -e "${GREEN}✅ Plymouth instal·lat correctament!${NC}"
+
 echo -e "${GREEN}🎉 Totes les eines de desenvolupament s'han instal·lat correctament!${NC}"
 
 
@@ -138,6 +142,7 @@ echo -e "${CYAN}      • Git - Control de versions${NC}"
 echo -e "${CYAN}      • Curl - Descàrregues HTTP${NC}"
 echo -e "${CYAN}      • Wget - Descàrregues de fitxers${NC}"
 echo -e "${CYAN}      • NeoFetch - Informació del sistema${NC}"
+echo -e "${CYAN}      • Snap - Gestor de paquets universal${NC}"
 
 echo -e "${MAGENTA}   👨‍💻 Eines de desenvolupament:${NC}"
 echo -e "${CYAN}      • Python3 & Pip - Llenguatge Python${NC}"
@@ -155,7 +160,10 @@ echo -e "${CYAN}      git config --global user.email \"el-teu@email.com\"${NC}"
 echo -e "${YELLOW}   2. Verifica les versions instal·lades:${NC}"
 echo -e "${CYAN}      python3 --version && node --version && java -version${NC}"
 
-echo -e "${YELLOW}   3. Prova NeoFetch per veure la informació del sistema:${NC}"
+echo -e "${YELLOW}   3. Comprova que Snap està funcionant:${NC}"
+echo -e "${CYAN}      snap version${NC}"
+
+echo -e "${YELLOW}   4. Prova NeoFetch per veure la informació del sistema:${NC}"
 echo -e "${CYAN}      neofetch${NC}"
 
 echo -e "\n${MAGENTA}💡 CONSELL: Reinicia la terminal per assegurar-te que tots els canvis tinguin efecte.${NC}"
