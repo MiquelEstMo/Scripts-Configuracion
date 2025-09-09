@@ -59,6 +59,10 @@ echo -e "\n${MAGENTA}✨ Instal·lant Wget...${NC}"
 sudo apt install wget -y
 echo -e "${GREEN}✅ Wget Instal·lat correctament!${NC}"
 
+echo -e "\n${MAGENTA}📦 Instal·lant Tar...${NC}"
+sudo apt install tar -y
+echo -e "${GREEN}✅ Tar Instal·lat correctament!${NC}"
+
 echo -e "\n${MAGENTA}✨ Instal·lant NeoFetch...${NC}"
 sudo apt install neofetch -y
 echo -e "${GREEN}✅ NeoFetch Instal·lat correctament!${NC}"

@@ -36,11 +36,20 @@ echo -e "${BLUE}⏳ Actualitzant paquets locals...${NC}\n"
 sudo apt-get update
 sudo apt-get upgrade -y
 
-echo -e "\n${GREEN}✅ Paquets actualitzats amb éxit.${NC}"
+echo -e "\n${GREEN}✅ Paquets actualitzats amb èxit.${NC}"
 
 # --------- ACTUALITZACIÓ DE PAQUETS ---------
 
-# -------------------------- INSTALACIÓ DE NEOVIM --------------------------
+# --------- INSTAL·LACIÓ DE FUSE ---------
+
+echo -e "\n${MAGENTA}🔧 Instalant FUSE (necessari per AppImages)...${NC}"
+sudo apt install fuse -y
+
+echo -e "${GREEN}✅ FUSE instal·lat correctament!${NC}"
+
+# --------- INSTAL·LACIÓ DE FUSE ---------
+
+# -------------------------- INSTAL·LACIÓ DE NEOVIM --------------------------
 
 echo -e "\n${MAGENTA}✨ Instalant NeoVim...${NC}"
 
@@ -52,19 +61,19 @@ sudo rm -f /usr/local/bin/nvim
 sudo ln -s ~/Applications/nvim-linux-x86_64.appimage /usr/local/bin/nvim
 nvim --version
 
-echo -e "${GREEN}✅ NeoVim instalat correctament!${NC}"
+echo -e "${GREEN}✅ NeoVim instal·lat correctament!${NC}"
 
-# -------------------------- INSTALACIÓ DE NEOVIM --------------------------
+# -------------------------- INSTAL·LACIÓ DE NEOVIM --------------------------
 
-# -------------------------- INSTALACIÓ DE NVCHAD --------------------------
+# -------------------------- INSTAL·LACIÓ DE NVCHAD --------------------------
 
 echo -e "${MAGENTA}✨ Instalant NvChad...${NC}"
 
 git clone https://github.com/NvChad/starter ~/.config/nvim
 
-echo -e "${GREEN}✅ NvChad instalat correctament!${NC}"
+echo -e "${GREEN}✅ NvChad instal·lat correctament!${NC}"
 
-# -------------------------- INSTALACIÓ DE NVCHAD --------------------------
+# -------------------------- INSTAL·LACIÓ DE NVCHAD --------------------------
 
 echo -e "${GREEN}✅ NeoVim && NvChad s'han instal·lat correctament!!${NC}"
 echo -e "${YELLOW}🚀 Executa NeoVim amb 'nvim' per configurar tot.${NC}"
