@@ -30,7 +30,7 @@ echo -e "\n${MAGENTA}✨ Instalant Zsh && Oh My Zsh${NC}"
 
 # ------------------------ BANNER ------------------------
 
-# --------- ACTUALITZACIÃ" DE PAQUETS ---------
+# --------- ACTUALITZACIÓ DE PAQUETS ---------
 
 echo -e "${BLUE}⏳ Actualitzant paquets locals...${NC}\n"
 
@@ -39,9 +39,9 @@ sudo apt-get upgrade -y
 
 echo -e "\n${GREEN}✅ Paquets actualitzats amb èxit.${NC}"
 
-# --------- ACTUALITZACIÃ" DE PAQUETS ---------
+# --------- ACTUALITZACIÓ DE PAQUETS ---------
 
-# -------------------------- INSTALACIÃ" DE ZSH --------------------------
+# -------------------------- INSTALACIÓ DE ZSH --------------------------
 
 echo -e "\n${MAGENTA}✨ Instalant Zsh...${NC}"
 sudo apt install zsh -y
@@ -73,5 +73,16 @@ echo -e "${GREEN}✅ Oh My Zsh instalat correctament!${NC}"
 
 chsh -s $(which zsh)
 
+# -------------------------- INSTALACIÓ DE NERDFONT --------------------------
+
+echo -e "\n${MAGENTA}✨ Instal·lant font JetBrainsMono Nerd Font...${NC}"
+mkdir -p ~/.local/share/fonts
+cp JetBrainsMonoNLNerdFontMono-Medium.ttf ~/.local/share/fonts
+fc-cache -fv
+echo -e "${GREEN}✅ JetBrainsMono Nerd Font instalat correctament!${NC}"
+
+# -------------------------- INSTALACIÓ DE NERDFONT --------------------------
+
 echo -e "${GREEN}✅ Zsh && Oh My Zsh s'han instal·lat correctament!!${NC}"
 echo -e "${YELLOW}🚀 Reinicia la terminal per aplicar els canvis.${NC}"
+echo -e "${YELLOW}💡 Recorda configurar la font JetBrainsMono Nerd Font a la teva terminal!${NC}"

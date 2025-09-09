@@ -124,7 +124,7 @@ sudo apt install -y snapd
 echo -e "${GREEN}✅ Snap instal·lat correctament!${NC}"
 
 echo -e "${CYAN}📦 Instal·lant Plymouth...${NC}"
-sudo apt install -y snapd
+sudo apt install -y plymouth plymouth-themes
 echo -e "${GREEN}✅ Plymouth instal·lat correctament!${NC}"
 
 echo -e "${GREEN}🎉 Totes les eines de desenvolupament s'han instal·lat correctament!${NC}"
