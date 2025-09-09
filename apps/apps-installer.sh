@@ -35,12 +35,7 @@ echo -e "\n${GREEN}✅ Paquets actualitzats amb éxit.${NC}"
 
 # --------- ACTUALITZACIÓ DE PAQUETS ---------
 
-echo -e "\n${MAGENTA}🎮 Instal·lant Steam...${NC}"
-deb http://deb.debian.org/debian/ bookworm main contrib non-free
-dpkg --add-architecture i386
-sudo apt install steam-installer
-sudo apt install mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386
-echo -e "${GREEN}✅ Steam Instal·lat correctament!${NC}"
+# ----------------- SNAPS & ALTRES -----------------
 
 echo -e "\n${MAGENTA}🎵 Instal·lant Reaper...${NC}"
 wget https://www.reaper.fm/files/7.x/reaper745_linux_x86_64.tar.xz
@@ -48,6 +43,13 @@ tar -xf reaper745_linux_x86_64.tar.xz
 cd reaper745_linux_x86_64
 bash install-reaper.sh
 echo -e "${GREEN}✅ Reaper Instal·lat correctament!${NC}"
+
+
+echo -e "\n${MAGENTA}⛏️ Instal·lant Minecraft...${NC}" 
+wget https://launcher.mojang.com/download/Minecraft.tar.gz
+tar -xf reaper745_linux_x86_64.tar.xz
+echo -e "${GREEN}✅ Minecraft Instal·lat correctament!${NC}"
+
 
 echo -e "\n${MAGENTA}🎧 Instal·lant Audacity...${NC}"
 sudo snap install audacity -y
@@ -73,7 +75,7 @@ curl -Lso bitwarden.sh "https://func.bitwarden.com/api/dl/?app=self-host&platfor
 rm bitwarden.sh
 echo -e "${GREEN}✅ Bitwarden Instal·lat correctament!${NC}"
 
-
+# ----------------- SNAPS & ALTRES -----------------
 
 # ----------------- PAQUETS DEB -----------------
 
@@ -85,15 +87,16 @@ wget "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
 sudo apt install ./discord.deb
 echo -e "${GREEN}✅ Discord Instal·lat correctament!${NC}"
 
-echo -e "\n${MAGENTA}⛏️ Instal·lant Minecraft...${NC}" 
-wget https://launcher.mojang.com/download/Minecraft.deb
-sudo dpkg -i Minecraft.deb
-sudo apt -f install
-echo -e "${GREEN}✅ Minecraft Instal·lat correctament!${NC}"
-
 echo -e "\n${MAGENTA}🔧 Instal·lant VS-Code...${NC}" 
 wget https://launcher.mojang.com/download/Minecraft.deb
 sudo apt install ./code_1.103.2-1755709794_amd64.deb
 echo -e "${GREEN}✅ VS-Code Instal·lat correctament!${NC}"
+
+echo -e "\n${MAGENTA}🎮 Instal·lant Steam...${NC}"
+sudo dpkg --add-architecture i386
+wget https://cdn.fastly.steamstatic.com/client/installer/steam.deb
+sudo apt install ./steam.deb    
+sudo apt install mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386
+echo -e "${GREEN}✅ Steam Instal·lat correctament!${NC}"
 
 # ----------------- PAQUETS DEB -----------------
