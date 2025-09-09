@@ -119,6 +119,10 @@ echo -e "${CYAN}🔍 Instal·lant Valgrind...${NC}"
 sudo apt install -y valgrind
 echo -e "${GREEN}✅ Valgrind instal·lat correctament!${NC}"
 
+echo -e "${CYAN}🔍 Instal·lant Snap...${NC}"
+sudo apt install -y snapd
+echo -e "${GREEN}✅ Snap instal·lat correctament!${NC}"
+
 echo -e "${GREEN}🎉 Totes les eines de desenvolupament s'han instal·lat correctament!${NC}"
 
 
