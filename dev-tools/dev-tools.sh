@@ -127,6 +127,12 @@ echo -e "${CYAN}📦 Instal·lant Plymouth...${NC}"
 sudo apt install -y plymouth plymouth-themes
 echo -e "${GREEN}✅ Plymouth instal·lat correctament!${NC}"
 
+echo -e "\n${MAGENTA}📦 Instal·lant Flatpak...${NC}"
+sudo apt install flatpak -y
+sudo apt install gnome-software-plugin-flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+echo -e "${GREEN}✅ Flatpak Instal·lat correctament!${NC}"
+
 echo -e "${GREEN}🎉 Totes les eines de desenvolupament s'han instal·lat correctament!${NC}"
 
 
@@ -170,5 +176,8 @@ echo -e "\n${MAGENTA}💡 CONSELL: Reinicia la terminal per assegurar-te que tot
 
 echo -e "\n${GREEN}✨ Gaudeix programant amb les teves noves eines! ✨${NC}"
 echo -e "${CYAN}=======================================================================${NC}"
+
+echo "Es reiniciarà el sistema en 10 segons"
+sudo shutdown -r +0.1
 
 # --------- MISSATGE FINAL ---------

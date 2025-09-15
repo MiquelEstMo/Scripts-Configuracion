@@ -35,12 +35,8 @@ echo -e "\n${GREEN}✅ Paquets actualitzats amb éxit.${NC}"
 
 # --------- ACTUALITZACIÓ DE PAQUETS ---------
 
-echo -e "\n${MAGENTA}🎮 Instal·lant Steam...${NC}"
-deb http://deb.debian.org/debian/ bookworm main contrib non-free
-dpkg --add-architecture i386
-sudo apt install steam-installer
-sudo apt install mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386
-echo -e "${GREEN}✅ Steam Instal·lat correctament!${NC}"
+mkdir -p ~/Applications
+cd ~/Applications
 
 echo -e "\n${MAGENTA}🎵 Instal·lant Reaper...${NC}"
 wget https://www.reaper.fm/files/7.x/reaper745_linux_x86_64.tar.xz
@@ -50,7 +46,7 @@ bash install-reaper.sh
 echo -e "${GREEN}✅ Reaper Instal·lat correctament!${NC}"
 
 echo -e "\n${MAGENTA}🎧 Instal·lant Audacity...${NC}"
-sudo snap install audacity -y
+sudo snap install audacity
 echo -e "${GREEN}✅ Audacity Instal·lat correctament!${NC}"
 
 echo -e "\n${MAGENTA}📻 Instal·lant Spotify...${NC}"
@@ -68,32 +64,37 @@ sudo snap install notion-desktop
 echo -e "${GREEN}✅ Notion Instal·lat correctament!${NC}"
 
 echo -e "\n${MAGENTA}🎥 Instal·lant Bitwarden...${NC}"
-curl -Lso bitwarden.sh "https://func.bitwarden.com/api/dl/?app=self-host&platform=linux" && chmod 700 bitwarden.sh
-./bitwarden.sh install
-rm bitwarden.sh
+sudo snap install bitwarden
 echo -e "${GREEN}✅ Bitwarden Instal·lat correctament!${NC}"
 
+echo -e "\n${MAGENTA}⛏️ Instal·lant Minecraft...${NC}" 
+flatpak install flathub com.mojang.Minecraft
+echo -e "${GREEN}✅ Minecraft Instal·lat correctament!${NC}"
 
 
 # ----------------- PAQUETS DEB -----------------
 
-mkdir -p ~/Downloads/Applications
-cd ~/Downloads/Applications
+echo -e "\n${MAGENTA}🎮 Instal·lant Steam...${NC}"
+sudo apt install steam-installer
+sudo apt install mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386
+wget https://cdn.fastly.steamstatic.com/client/installer/steam.deb
+sudo dpkg -i steam_stable
+sudo apt -f install
+echo -e "${GREEN}✅ Steam Instal·lat correctament!${NC}"
 
 echo -e "\n${MAGENTA}💬 Instal·lant Discord...${NC}"
 wget "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
 sudo apt install ./discord.deb
 echo -e "${GREEN}✅ Discord Instal·lat correctament!${NC}"
 
-echo -e "\n${MAGENTA}⛏️ Instal·lant Minecraft...${NC}" 
-wget https://launcher.mojang.com/download/Minecraft.deb
-sudo dpkg -i Minecraft.deb
-sudo apt -f install
-echo -e "${GREEN}✅ Minecraft Instal·lat correctament!${NC}"
-
 echo -e "\n${MAGENTA}🔧 Instal·lant VS-Code...${NC}" 
-wget https://launcher.mojang.com/download/Minecraft.deb
-sudo apt install ./code_1.103.2-1755709794_amd64.deb
+wget https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+sudo dpkg -i code.deb
+sudo apt -f install
 echo -e "${GREEN}✅ VS-Code Instal·lat correctament!${NC}"
 
 # ----------------- PAQUETS DEB -----------------
+
+
+echo "Es reiniciarà el sistema en 10 segons"
+sudo shutdown -r +0.1
