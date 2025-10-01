@@ -73,15 +73,11 @@ echo -e "${GREEN}✅ Oh My Zsh instalat correctament!${NC}"
 
 chsh -s $(which zsh)
 
-# -------------------------- INSTALACIÓ DE NERDFONT --------------------------
-
-echo -e "\n${MAGENTA}✨ Instal·lant font JetBrainsMono Nerd Font...${NC}"
-mkdir -p ~/.local/share/fonts
-cp JetBrainsMonoNLNerdFontMono-Medium.ttf ~/.local/share/fonts
-fc-cache -fv
-echo -e "${GREEN}✅ JetBrainsMono Nerd Font instalat correctament!${NC}"
-
-# -------------------------- INSTALACIÓ DE NERDFONT --------------------------
+sudo apt install kitty
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Kitty Terminal'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'kitty'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Ctrl><Alt>t'
 
 echo -e "${GREEN}✅ Zsh && Oh My Zsh s'han instal·lat correctament!!${NC}"
 echo -e "${YELLOW}🚀 Reinicia la terminal per aplicar els canvis.${NC}"
