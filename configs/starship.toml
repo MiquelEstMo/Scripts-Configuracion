@@ -1,0 +1,322 @@
+# ============================================
+# STARSHIP PROMPT CONFIGURATION
+# ============================================
+
+add_newline = false
+
+# ============================================
+# PROMPT FORMAT
+# ============================================
+format = """
+$os\
+$username\
+$directory\
+$git_branch\
+$git_status\
+$python\
+$java\
+$c\
+$cpp\
+$nodejs\
+$cmd_duration\
+$time\
+$battery\
+$character
+"""
+
+# ============================================
+# SISTEMA Y USUARIO
+# ============================================
+
+[os]
+format = '\[[$symbol]($style)\]'
+disabled = false
+style = "bold #ffc183"
+
+[os.symbols]
+Debian = ""
+
+[username]
+show_always = true
+format = '\[[🐧 $user]($style)\]'
+style_user = "bold #ffc183"
+style_root = "bold #d8393d"
+
+# ============================================
+# NAVEGACIÓN
+# ============================================
+
+[directory]
+format = '\[[$path]($style)\]'
+style = "bold #2388ff"
+truncation_length = 2
+fish_style_pwd_dir_length = 1
+truncate_to_repo = true
+
+# ============================================
+# GIT
+# ============================================
+
+[git_branch]
+format = '\[[$symbol $branch]($style)\]'
+symbol = " "
+style = "bold #2dcc72"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style))'
+
+# ============================================
+# LLENGUATJES DE PROGRAMACIÓ
+# ============================================
+
+[python]
+format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
+
+[java]
+format = '\[[☕ ($version)]($style)\]'
+symbol = "☕ "
+
+[nodejs]
+format = '\[[$symbol($version)]($style)\]'
+
+[rust]
+format = '\[[$symbol($version)]($style)\]'
+
+[golang]
+format = '\[[$symbol($version)]($style)\]'
+
+[c]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+style = "bold #2388ff"
+detect_extensions = ["c", "h"]
+
+[cpp]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+style = "bold #b48ead"
+detect_extensions = ["cpp", "hpp", "cc", "cxx", "h"]
+
+[ruby]
+format = '\[[$symbol($version)]($style)\]'
+
+[php]
+format = '\[[$symbol($version)]($style)\]'
+
+[dart]
+format = '\[[$symbol($version)]($style)\]'
+
+[kotlin]
+format = '\[[$symbol($version)]($style)\]'
+
+[swift]
+format = '\[[$symbol($version)]($style)\]'
+
+[scala]
+format = '\[[$symbol($version)]($style)\]'
+
+[elixir]
+format = '\[[$symbol($version \(OTP $otp_version\))]($style)\]'
+
+[erlang]
+format = '\[[$symbol($version)]($style)\]'
+
+[haskell]
+format = '\[[$symbol($version)]($style)\]'
+
+[julia]
+format = '\[[$symbol($version)]($style)\]'
+
+[lua]
+format = '\[[$symbol($version)]($style)\]'
+
+[perl]
+format = '\[[$symbol($version)]($style)\]'
+
+[zig]
+format = '\[[$symbol($version)]($style)\]'
+
+[nim]
+format = '\[[$symbol($version)]($style)\]'
+
+[crystal]
+format = '\[[$symbol($version)]($style)\]'
+
+[ocaml]
+format = '\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\]'
+
+[raku]
+format = '\[[$symbol($version-$vm_version)]($style)\]'
+
+[red]
+format = '\[[$symbol($version)]($style)\]'
+
+[vlang]
+format = '\[[$symbol($version)]($style)\]'
+
+[solidity]
+format = '\[[$symbol($version)]($style)\]'
+
+[purescript]
+format = '\[[$symbol($version)]($style)\]'
+
+[haxe]
+format = '\[[$symbol($version)]($style)\]'
+
+[fennel]
+format = '\[[$symbol($version)]($style)\]'
+
+[daml]
+format = '\[[$symbol($version)]($style)\]'
+
+[elm]
+format = '\[[$symbol($version)]($style)\]'
+
+[opa]
+format = '\[[$symbol($version)]($style)\]'
+
+[cobol]
+format = '\[[$symbol($version)]($style)\]'
+
+# ============================================
+# BUILD TOOLS & FRAMEWORKS
+# ============================================
+
+[cmake]
+format = '\[[$symbol($version)]($style)\]'
+
+[gradle]
+format = '\[[$symbol($version)]($style)\]'
+
+[meson]
+format = '\[[$symbol$project]($style)\]'
+
+[dotnet]
+format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
+
+[deno]
+format = '\[[$symbol($version)]($style)\]'
+
+[bun]
+format = '\[[$symbol($version)]($style)\]'
+
+[helm]
+format = '\[[$symbol($version)]($style)\]'
+
+[terraform]
+format = '\[[$symbol$workspace]($style)\]'
+
+[pulumi]
+format = '\[[$symbol$stack]($style)\]'
+
+# ============================================
+# CONTENEDORS I CLOUD
+# ============================================
+
+[docker_context]
+format = '\[[$symbol$context]($style)\]'
+
+[kubernetes]
+format = '\[[$symbol$context( \($namespace\))]($style)\]'
+
+[aws]
+format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
+
+[gcloud]
+format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
+
+[openstack]
+format = '\[[$symbol$cloud(\($project\))]($style)\]'
+
+# ============================================
+# ENTORNS I SHELLS
+# ============================================
+
+[conda]
+format = '\[[$symbol$environment]($style)\]'
+
+[nix_shell]
+format = '\[[$symbol$state( \($name\))]($style)\]'
+
+[guix_shell]
+format = '\[[$symbol]($style)\]'
+
+[spack]
+format = '\[[$symbol$environment]($style)\]'
+
+[pixi]
+format = '\[[$symbol$version( $environment)]($style)\]'
+
+[vagrant]
+format = '\[[$symbol($version)]($style)\]'
+
+# ============================================
+# CONTROL DE VERSIONS
+# ============================================
+
+[hg_branch]
+format = '\[[$symbol$branch]($style)\]'
+
+[fossil_branch]
+format = '\[[$symbol$branch]($style)\]'
+
+[pijul_channel]
+format = '\[[$symbol$channel]($style)\]'
+
+# ============================================
+# INFORMACIÓ DEL SISTEMA
+# ============================================
+
+[time]
+disabled = false
+format = '\[[$time]($style)\]'
+time_format = "%H:%M"
+style = "bold #dd8d40"
+
+[cmd_duration]
+min_time = 100 
+format = '\[[⏱ $duration]($style)\]'
+
+[battery]
+full_symbol = "⚡"
+charging_symbol = "⚡"
+unknown_symbol = "⚡"
+discharging_symbol = "🔋"
+format = '\[[$symbol$percentage]($style)\]'
+
+# Cuando está DESCARGANDO
+[[battery.display]]
+threshold = 15
+discharging_symbol = "💀"
+style = "bold red"
+
+[[battery.display]]
+threshold = 30
+discharging_symbol = "🪫"
+style = "bold yellow"
+
+[[battery.display]]
+threshold = 80
+discharging_symbol = "🔋"
+style = "bold yellow"
+
+[[battery.display]]
+threshold = 100
+discharging_symbol = "🔋"
+style = "bold green"
+
+[memory_usage]
+format = '\[$symbol[$ram( | $swap)]($style)\]'
+
+[sudo]
+format = '\[[as $symbol]($style)\]'
+
+# ============================================
+# ALTRES
+# ============================================
+
+[package]
+format = '\[[$symbol$version]($style)\]'
+
+[line_break]
+disabled = true

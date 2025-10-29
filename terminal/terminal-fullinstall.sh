@@ -49,7 +49,13 @@ zsh --version
 
 echo -e "${GREEN}✅ Zsh instalat correctament!${NC}"
 
-echo -e "\n${MAGENTA}✨ Instal·lant Oh My Zsh...${NC}"
+echo -e "\n${MAGENTA}✨ Instalant Starship...${NC}"
+
+sudo apt install starship -y
+sleep 5
+cp -f configs/starship.toml ~/.config/starship.toml
+
+echo -e "${GREEN}✅ Starship instalat correctament!${NC}"
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
@@ -64,8 +70,6 @@ git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM
 echo -e "\n${MAGENTA}✨ Instal·lant configuració...${NC}"
 
 cp -v .zshrc ~/.zshrc
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc    
 
 echo -e "${GREEN}✅ Configuració instalada correctament!${NC}"
 
@@ -80,4 +84,3 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 
 echo -e "${GREEN}✅ Zsh && Oh My Zsh s'han instal·lat correctament!!${NC}"
 echo -e "${YELLOW}🚀 Reinicia la terminal per aplicar els canvis.${NC}"
-echo -e "${YELLOW}💡 Recorda configurar la font JetBrainsMono Nerd Font a la teva terminal!${NC}"
