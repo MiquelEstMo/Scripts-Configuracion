@@ -34,6 +34,7 @@ echo -e "\n${GREEN}✅ Paquets actualitzats amb éxit.${NC}"
 
 # --------- ACTUALITZACIÓ DE PAQUETS ---------
 
+# --------- RPM FUSION ---------
 # Crear directori temporal per descàrregues
 mkdir -p ~/Apps
 pushd ~/Apps > /dev/null
@@ -47,10 +48,11 @@ pushd reaper_linux_x86_64 > /dev/null
 popd > /dev/null
 echo -e "${GREEN}✅ Reaper Instal·lat correctament!${NC}"
 
-# ----------------- SNAPS & ALTRES -----------------
+
+# ----------------- Flatpaks & ALTRES -----------------
 
 echo -e "\n${MAGENTA}🎧 Instal·lant Audacity...${NC}"
-flatpak install flathub org.audacityteam.Audacity -y
+sudo dnf install audacity-freeworld -y
 echo -e "${GREEN}✅ Audacity Instal·lat correctament!${NC}"
 
 echo -e "\n${MAGENTA}📻 Instal·lant Spotify...${NC}"
@@ -58,7 +60,7 @@ flatpak install flathub com.spotify.Client -y
 echo -e "${GREEN}✅ Spotify Instal·lat correctament!${NC}"
 
 echo -e "\n${MAGENTA}🎥 Instal·lant VLC...${NC}"
-flatpak install flathub org.videolan.VLC -y
+sudo dnf install vlc -y
 echo -e "${GREEN}✅ VLC Instal·lat correctament!${NC}"
 
 echo -e "\n${MAGENTA}🔐 Instal·lant Bitwarden...${NC}"
@@ -69,9 +71,22 @@ echo -e "\n${MAGENTA}⛏️ Instal·lant Minecraft...${NC}"
 flatpak install flathub org.prismlauncher.PrismLauncher -y
 echo -e "${GREEN}✅ Minecraft Instal·lat correctament!${NC}"
 
-echo -e "\n${MAGENTA}🎮 Instal·lant Dolphin...${NC}" 
-flatpak install flathub org.DolphinEmu.dolphin-emu -y
+echo -e "\n${MAGENTA}🎮 Instal·lant Dolphin...${NC}"
+sudo dnf install dolphin-emu -y
 echo -e "${GREEN}✅ Dolphin Instal·lat correctament!${NC}"
+
+echo -e "\n${MAGENTA}📁 Instal·lant FileZilla...${NC}"
+sudo dnf install filezilla -y
+echo -e "${GREEN}✅ FileZilla Instal·lat correctament!${NC}"
+
+
+echo -e "\n${MAGENTA}🧱 Instal·lant Roblox (Sober)...${NC}"
+flatpak install flathub org.vinegarhq.Sober -y
+echo -e "${GREEN}✅ Roblox Instal·lat correctament!${NC}"
+
+echo -e "\n${MAGENTA}🎮 Instal·lant Steam...${NC}"
+sudo dnf install steam -y
+echo -e "${GREEN}✅ Steam Instal·lat correctament!${NC}"
 
 echo -e "\n${YELLOW}⚠️  Es reiniciarà el sistema en 10 segons${NC}"
 sleep 10

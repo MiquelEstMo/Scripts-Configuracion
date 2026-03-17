@@ -44,6 +44,9 @@ echo -e "\n${GREEN}✅ Paquets actualitzats amb éxit.${NC}"
 
 echo -e "\n${MAGENTA}🔧 Instal·lant eines bàsiques del sistema...${NC}"
 
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+
+sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
 
 echo -e "\n${MAGENTA}✨ Instal·lant Git...${NC}"
 sudo dnf install git -y

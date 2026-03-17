@@ -50,7 +50,7 @@ alias tree='colorls --tree'
 # Misc alias
 alias ytdl='yt-dlp -f "bestvideo[height<=1080]+bestaudio" --merge-output-format mp4 -o "~/Videos/%(title)s.%(ext)s"'
 
-# Actualitzacio completa del sistema (apt + flatpak + discord)
+# Actualitzacio completa del sistema (dnf + flatpak + discord)
 sysupdate() {
     sudo dnf upgrade -y
     flatpak update -y
