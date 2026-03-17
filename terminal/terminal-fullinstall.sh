@@ -77,6 +77,8 @@ cp -v "$(dirname "$0")/.zshrc" ~/.zshrc
 
 echo -e "${GREEN}✅ Configuració instalada correctament!${NC}"
 
+sudo dnf install starship -y
+
 echo -e "${GREEN}✅ Oh My Zsh instalat correctament!${NC}"
 
 chsh -s $(which zsh)
