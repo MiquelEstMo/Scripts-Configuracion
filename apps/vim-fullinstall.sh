@@ -33,8 +33,7 @@ echo -e "\n${MAGENTA}✨ Instalant NeoVim && NvChad${NC}"
 
 echo -e "${BLUE}⏳ Actualitzant paquets locals...${NC}\n"
 
-sudo apt-get update
-sudo apt-get upgrade -y
+sudo dnf update -y
 
 echo -e "\n${GREEN}✅ Paquets actualitzats amb èxit.${NC}"
 
@@ -43,7 +42,7 @@ echo -e "\n${GREEN}✅ Paquets actualitzats amb èxit.${NC}"
 # --------- INSTAL·LACIÓ DE FUSE ---------
 
 echo -e "\n${MAGENTA}🔧 Instalant FUSE (necessari per AppImages)...${NC}"
-sudo apt install fuse -y
+sudo dnf install fuse -y
 
 echo -e "${GREEN}✅ FUSE instal·lat correctament!${NC}"
 

@@ -73,8 +73,8 @@ format = '([\[$all_status$ahead_behind\]]($style))'
 format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
 
 [java]
-format = '\[[☕ ($version)]($style)\]'
-symbol = "☕ "
+format = '\[[$symbol($version)]($style)\]'
+symbol = "☕️ "
 
 [nodejs]
 format = '\[[$symbol($version)]($style)\]'
@@ -275,12 +275,12 @@ style = "bold #dd8d40"
 
 [cmd_duration]
 min_time = 100 
-format = '\[[⏱ $duration]($style)\]'
+format = '\[[⏱️ $duration]($style)\]'
 
 [battery]
-full_symbol = "⚡"
-charging_symbol = "⚡"
-unknown_symbol = "⚡"
+full_symbol = "⚡️"
+charging_symbol = "⚡️"
+unknown_symbol = "⚡️"
 discharging_symbol = "🔋"
 format = '\[[$symbol$percentage]($style)\]'
 

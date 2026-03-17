@@ -28,8 +28,7 @@ echo -e "\n${MAGENTA}✨ Instalant Apps i més${NC}"
 
 echo -e "${BLUE}⏳ Actualitzant paquets locals...${NC}\n"
 
-sudo apt-get update
-sudo apt-get upgrade -y
+sudo dnf update -y
 
 echo -e "\n${GREEN}✅ Paquets actualitzats amb éxit.${NC}"
 
@@ -37,60 +36,43 @@ echo -e "\n${GREEN}✅ Paquets actualitzats amb éxit.${NC}"
 
 # Crear directori temporal per descàrregues
 mkdir -p ~/Apps
-cd ~/Apps
+pushd ~/Apps > /dev/null
 
 # --------- REAPER ---------
 echo -e "\n${MAGENTA}🎵 Instal·lant Reaper...${NC}"
-wget https://www.reaper.fm/files/7.x/reaper745_linux_x86_64.tar.xz
-tar -xf reaper745_linux_x86_64.tar.xz
-cd reaper_linux_x86_64
+wget https://www.reaper.fm/files/7.x/reaper765_linux_x86_64.tar.xz
+tar -xf reaper765_linux_x86_64.tar.xz
+pushd reaper_linux_x86_64 > /dev/null
 ./install-reaper.sh --install /opt --integrate-desktop --usr-local-bin-symlink
-cd ~/Apps
+popd > /dev/null
 echo -e "${GREEN}✅ Reaper Instal·lat correctament!${NC}"
 
 # ----------------- SNAPS & ALTRES -----------------
 
 echo -e "\n${MAGENTA}🎧 Instal·lant Audacity...${NC}"
-sudo snap install audacity
+flatpak install flathub org.audacityteam.Audacity -y
 echo -e "${GREEN}✅ Audacity Instal·lat correctament!${NC}"
 
 echo -e "\n${MAGENTA}📻 Instal·lant Spotify...${NC}"
-curl -sS https://download.spotify.com/debian/pubkey_C85668DF69375001.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
-echo "deb https://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-sudo apt-get update && sudo apt-get install -y spotify-client
+flatpak install flathub com.spotify.Client -y
 echo -e "${GREEN}✅ Spotify Instal·lat correctament!${NC}"
 
 echo -e "\n${MAGENTA}🎥 Instal·lant VLC...${NC}"
-sudo snap install vlc
+flatpak install flathub org.videolan.VLC -y
 echo -e "${GREEN}✅ VLC Instal·lat correctament!${NC}"
 
-echo -e "\n${MAGENTA}📝 Instal·lant Notion...${NC}"
-sudo snap install notion-snap-reborn
-echo -e "${GREEN}✅ Notion Instal·lat correctament!${NC}"
-
 echo -e "\n${MAGENTA}🔐 Instal·lant Bitwarden...${NC}"
-sudo snap install bitwarden
+flatpak install flathub com.bitwarden.desktop -y
 echo -e "${GREEN}✅ Bitwarden Instal·lat correctament!${NC}"
 
 echo -e "\n${MAGENTA}⛏️ Instal·lant Minecraft...${NC}" 
-flatpak install flathub com.mojang.Minecraft
-ln -sf /home/miquel/.var/app/com.mojang.Minecraft/.minecraft .minecraft
+flatpak install flathub org.prismlauncher.PrismLauncher -y
 echo -e "${GREEN}✅ Minecraft Instal·lat correctament!${NC}"
 
-
-# ----------------- PAQUETS DEB -----------------
-
-echo -e "\n${MAGENTA}💬 Instal·lant Discord...${NC}"
-wget -O discord.deb "https://discord.com/api/download?platform=linux&format=deb"
-sudo apt install -y ./discord.deb
-echo -e "${GREEN}✅ Discord Instal·lat correctament!${NC}"
-
-echo -e "\n${MAGENTA}🔧 Instal·lant VS-Code...${NC}" 
-wget -O code.deb https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
-sudo dpkg -i code.deb
-sudo apt -f install -y
-echo -e "${GREEN}✅ VS-Code Instal·lat correctament!${NC}"
-
+echo -e "\n${MAGENTA}🎮 Instal·lant Dolphin...${NC}" 
+flatpak install flathub org.DolphinEmu.dolphin-emu -y
+echo -e "${GREEN}✅ Dolphin Instal·lat correctament!${NC}"
 
 echo -e "\n${YELLOW}⚠️  Es reiniciarà el sistema en 10 segons${NC}"
-sleep 10 && sudo reboot
+sleep 10
+sudo reboot

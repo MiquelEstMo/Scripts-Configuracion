@@ -34,26 +34,30 @@ echo -e "\n${MAGENTA}✨ Instalant Zsh && Oh My Zsh${NC}"
 
 echo -e "${BLUE}⏳ Actualitzant paquets locals...${NC}\n"
 
-sudo apt-get update
-sudo apt-get upgrade -y
+sudo dnf upgrade -y
 
 echo -e "\n${GREEN}✅ Paquets actualitzats amb èxit.${NC}"
 
-# --------- ACTUALITZACIÓ DE PAQUETS ---------
+# --------- ACTUALITZACIÓ DE PAQUETS --------
+
+echo -e "\n${MAGENTA}✨ Instalant Kitty...${NC}"
+sudo dnf install kitty -y
+
+echo -e "${GREEN}✅ Kitty instalat correctament!${NC}"
+
 
 # -------------------------- INSTALACIÓ DE ZSH --------------------------
 
 echo -e "\n${MAGENTA}✨ Instalant Zsh...${NC}"
-sudo apt install zsh -y
+sudo dnf install zsh -y
 zsh --version
 
 echo -e "${GREEN}✅ Zsh instalat correctament!${NC}"
 
 echo -e "\n${MAGENTA}✨ Instalant Starship...${NC}"
 
-sudo apt install starship -y
-sleep 5
-cp -f configs/starship.toml ~/.config/starship.toml
+sudo dnf install starship -y
+cp -f "$(dirname "$0")/configs/starship.toml" ~/.config/starship.toml
 
 echo -e "${GREEN}✅ Starship instalat correctament!${NC}"
 
@@ -69,7 +73,7 @@ git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM
 
 echo -e "\n${MAGENTA}✨ Instal·lant configuració...${NC}"
 
-cp -v .zshrc ~/.zshrc
+cp -v "$(dirname "$0")/.zshrc" ~/.zshrc
 
 echo -e "${GREEN}✅ Configuració instalada correctament!${NC}"
 
@@ -77,10 +81,7 @@ echo -e "${GREEN}✅ Oh My Zsh instalat correctament!${NC}"
 
 chsh -s $(which zsh)
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Kitty Terminal'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'gnome-terminal'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Ctrl><Alt>t'
-
-echo -e "${GREEN}✅ Zsh && Oh My Zsh s'han instal·lat correctament!!${NC}"
-echo -e "${YELLOW}🚀 Reinicia la terminal per aplicar els canvis.${NC}"
+echo -e "${GREEN}✅ Zsh, Kitty && Oh My Zsh s'han instal·lat correctament!!${NC}"
+echo -e "\n${YELLOW}⚠️  Es reiniciarà el sistema en 10 segons${NC}"
+sleep 10
+sudo reboot

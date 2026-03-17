@@ -47,6 +47,16 @@ alias la='colorls -A'
 alias ll='colorls -lA'
 alias tree='colorls --tree'
 
+# Misc alias
+alias ytdl='yt-dlp -f "bestvideo[height<=1080]+bestaudio" --merge-output-format mp4 -o "~/Videos/%(title)s.%(ext)s"'
+
+# Actualitzacio completa del sistema (apt + flatpak + discord)
+sysupdate() {
+    sudo dnf upgrade -y
+    flatpak update -y
+    ~/Documents/Programació/Scripts-Configuracion/apps/discord.sh
+}
+
 # =============================================================================
 # FUNCIONS PERSONALITZADES
 # =============================================================================
@@ -68,8 +78,21 @@ cd() {
 
 # Compilacio i execucio rapida de Java
 jrun() {
-    javac *.java && java "$@"
-    rm -f *.class
+    # Verificar archivos .java
+    ls *.java &>/dev/null || { echo "Error: No hay archivos .java"; return 1; } 
+    # Buscar paquete
+    local pkg=$(grep -h "^package " *.java 2>/dev/null | head -1 | sed 's/package //;s/;//;s/ //g')
+    if [ -n "$pkg" ]; then
+        # Con paquete: subir niveles necesarios
+        local levels=$(echo "$pkg" | tr -cd '.' | wc -c)
+        local backup=$(pwd)
+        for ((i=0; i<=levels; i++)); do cd ..; done
+        javac ${pkg//.//}/*.java && java ${pkg}.${1%.java} && rm -f ${pkg//.//}/*.class
+        cd "$backup"
+    else
+        # Sin paquete
+        javac *.java && java ${1%.java} && rm -f *.class
+    fi
 }
 
 # =============================================================================
@@ -89,3 +112,12 @@ eval "$(~/.local/bin/mise activate zsh)"
 
 # Prompt personalitzat Starship
 eval "$(starship init zsh)"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# =======================================
+# MOTD
+# =======================================
+/usr/local/bin/my-motd

@@ -34,8 +34,7 @@ echo -e "\n${MAGENTA}✨ Instalant essentials-dev${NC}"
 
 echo -e "${BLUE}⏳ Actualitzant paquets locals...${NC}\n"
 
-sudo apt-get update
-sudo apt-get upgrade -y
+sudo dnf update -y
 
 echo -e "\n${GREEN}✅ Paquets actualitzats amb éxit.${NC}"
 
@@ -47,25 +46,25 @@ echo -e "\n${MAGENTA}🔧 Instal·lant eines bàsiques del sistema...${NC}"
 
 
 echo -e "\n${MAGENTA}✨ Instal·lant Git...${NC}"
-sudo apt install git -y
+sudo dnf install git -y
 git --version
 echo -e "${GREEN}✅ Git Instal·lat correctament!${NC}"
 
 echo -e "\n${MAGENTA}✨ Instal·lant Curl...${NC}"
-sudo apt install curl -y
+sudo dnf install curl -y
 echo -e "${GREEN}✅ Curl Instal·lat correctament!${NC}"
 
 echo -e "\n${MAGENTA}✨ Instal·lant Wget...${NC}"
-sudo apt install wget -y
+sudo dnf install wget -y
 echo -e "${GREEN}✅ Wget Instal·lat correctament!${NC}"
 
 echo -e "\n${MAGENTA}📦 Instal·lant Tar...${NC}"
-sudo apt install tar -y
+sudo dnf install tar -y
 echo -e "${GREEN}✅ Tar Instal·lat correctament!${NC}"
 
-echo -e "\n${MAGENTA}✨ Instal·lant NeoFetch...${NC}"
-sudo apt install neofetch -y
-echo -e "${GREEN}✅ NeoFetch Instal·lat correctament!${NC}"
+echo -e "\n${MAGENTA}✨ Instal·lant FastFetch...${NC}"
+sudo dnf install fastfetch -y
+echo -e "${GREEN}✅ Fastfetch Instal·lat correctament!${NC}"
 
 echo -e "${GREEN}🎉 Totes les eines de bàsiques s'han instal·lat correctament!${NC}"
 
@@ -76,62 +75,64 @@ echo -e "${GREEN}🎉 Totes les eines de bàsiques s'han instal·lat correctamen
 echo -e "\n${GREEN}👨‍💻 Instal·lant eines de desenvolupament...${NC}"
 
 echo -e "${CYAN}🐍 Instal·lant Python3...${NC}"
-sudo apt install -y python3
+sudo dnf install -y python3
 echo -e "${GREEN}✅ Python3 instal·lat correctament!${NC}"
 
 echo -e "${CYAN}📦 Instal·lant Python3-pip...${NC}"
-sudo apt install -y python3-pip
+sudo dnf install -y python3-pip
 echo -e "${GREEN}✅ Python3-pip instal·lat correctament!${NC}"
 
 echo -e "${CYAN}🟢 Instal·lant Node.js...${NC}"
-sudo apt install -y nodejs
+sudo dnf install -y nodejs
 echo -e "${GREEN}✅ Node.js instal·lat correctament!${NC}"
 
 echo -e "${CYAN}📋 Instal·lant NPM...${NC}"
-sudo apt install -y npm
+sudo dnf install -y npm
 echo -e "${GREEN}✅ NPM instal·lat correctament!${NC}"
 
 echo -e "${CYAN}☕ Instal·lant Java JDK...${NC}"
-sudo apt install -y default-jdk
+sudo dnf install -y java-latest-openjdk-devel
 echo -e "${GREEN}✅ Java JDK instal·lat correctament!${NC}"
 
 echo -e "${CYAN}⚙️ Instal·lant GCC...${NC}"
-sudo apt install -y gcc
+sudo dnf install -y gcc
 echo -e "${GREEN}✅ GCC instal·lat correctament!${NC}"
 
 echo -e "${CYAN}🔧 Instal·lant G++...${NC}"
-sudo apt install -y g++
+sudo dnf install -y gcc-c++
 echo -e "${GREEN}✅ G++ instal·lat correctament!${NC}"
 
 echo -e "${CYAN}🔨 Instal·lant Make...${NC}"
-sudo apt install -y make
+sudo dnf install -y make
 echo -e "${GREEN}✅ Make instal·lat correctament!${NC}"
 
 echo -e "${CYAN}🏗️ Instal·lant CMake...${NC}"
-sudo apt install -y cmake
+sudo dnf install -y cmake
 echo -e "${GREEN}✅ CMake instal·lat correctament!${NC}"
 
 echo -e "${CYAN}🐛 Instal·lant GDB...${NC}"
-sudo apt install -y gdb
+sudo dnf install -y gdb
 echo -e "${GREEN}✅ GDB instal·lat correctament!${NC}"
 
 echo -e "${CYAN}🔍 Instal·lant Valgrind...${NC}"
-sudo apt install -y valgrind
+sudo dnf install -y valgrind
 echo -e "${GREEN}✅ Valgrind instal·lat correctament!${NC}"
 
-echo -e "${CYAN}🔍 Instal·lant Snap...${NC}"
-sudo apt install -y snapd
-echo -e "${GREEN}✅ Snap instal·lat correctament!${NC}"
-
 echo -e "${CYAN}📦 Instal·lant Plymouth...${NC}"
-sudo apt install -y plymouth plymouth-themes
+sudo dnf install -y plymouth plymouth-themes
 echo -e "${GREEN}✅ Plymouth instal·lat correctament!${NC}"
 
 echo -e "\n${MAGENTA}📦 Instal·lant Flatpak...${NC}"
-sudo apt install flatpak -y
-sudo apt install gnome-software-plugin-flatpak
+sudo dnf install flatpak -y
+sudo dnf install -y gnome-software-plugin-flatpak
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 echo -e "${GREEN}✅ Flatpak Instal·lat correctament!${NC}"
+
+
+echo -e "${CYAN}📄 Instal·lant TinyTeX (LaTeX)...${NC}"
+wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh
+echo -e "${GREEN}✅ TinyTeX (LaTeX) instal·lat correctament!${NC}"
+
 
 echo -e "${GREEN}🎉 Totes les eines de desenvolupament s'han instal·lat correctament!${NC}"
 
@@ -147,8 +148,7 @@ echo -e "${MAGENTA}   🔧 Eines bàsiques:${NC}"
 echo -e "${CYAN}      • Git - Control de versions${NC}"
 echo -e "${CYAN}      • Curl - Descàrregues HTTP${NC}"
 echo -e "${CYAN}      • Wget - Descàrregues de fitxers${NC}"
-echo -e "${CYAN}      • NeoFetch - Informació del sistema${NC}"
-echo -e "${CYAN}      • Snap - Gestor de paquets universal${NC}"
+echo -e "${CYAN}      • FastFetch - Informació del sistema${NC}"
 
 echo -e "${MAGENTA}   👨‍💻 Eines de desenvolupament:${NC}"
 echo -e "${CYAN}      • Python3 & Pip - Llenguatge Python${NC}"
@@ -157,6 +157,7 @@ echo -e "${CYAN}      • Java JDK - Desenvolupament Java${NC}"
 echo -e "${CYAN}      • GCC & G++ - Compiladors C/C++${NC}"
 echo -e "${CYAN}      • Make & CMake - Eines de construcció${NC}"
 echo -e "${CYAN}      • GDB & Valgrind - Debugging i profiling${NC}"
+echo -e "${CYAN}      • TinyTeX - Composició de documents LaTeX${NC}"
 
 echo -e "\n${GREEN}🚀 SEGÜENTS PASSOS RECOMANATS:${NC}"
 echo -e "${YELLOW}   1. Configura Git amb les teves credencials:${NC}"
@@ -166,18 +167,16 @@ echo -e "${CYAN}      git config --global user.email \"el-teu@email.com\"${NC}"
 echo -e "${YELLOW}   2. Verifica les versions instal·lades:${NC}"
 echo -e "${CYAN}      python3 --version && node --version && java -version${NC}"
 
-echo -e "${YELLOW}   3. Comprova que Snap està funcionant:${NC}"
-echo -e "${CYAN}      snap version${NC}"
-
-echo -e "${YELLOW}   4. Prova NeoFetch per veure la informació del sistema:${NC}"
-echo -e "${CYAN}      neofetch${NC}"
+echo -e "${YELLOW}   3. Prova FastFetch per veure la informació del sistema:${NC}"
+echo -e "${CYAN}      fastfetch${NC}"
 
 echo -e "\n${MAGENTA}💡 CONSELL: Reinicia la terminal per assegurar-te que tots els canvis tinguin efecte.${NC}"
 
 echo -e "\n${GREEN}✨ Gaudeix programant amb les teves noves eines! ✨${NC}"
 echo -e "${CYAN}=======================================================================${NC}"
 
-echo "Es reiniciarà el sistema en 10 segons"
-sudo shutdown -r +0.1
+echo -e "\n${YELLOW}⚠️  Es reiniciarà el sistema en 10 segons${NC}"
+sleep 10
+sudo reboot
 
 # --------- MISSATGE FINAL ---------
